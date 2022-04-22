@@ -1,0 +1,12 @@
+Big O Notion:
+
+Looking at the Big O analysis of each method "COLOR.setOnAction(event -> {"
+
+we believe the constant time algorithm is at play here, as the input sizes never changes
+and only one radio button can be selected at a time, making the Big O notion of each method to be:
+
+O(1)
+
+for a program total to be:
+
+O(3)
