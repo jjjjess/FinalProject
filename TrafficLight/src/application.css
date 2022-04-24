@@ -6,7 +6,6 @@
 
 .radio-button .radio {
     -fx-border-width: 1px;
-    -fx-border-color: -fx-darkest-grey-color;
     -fx-background-color: rgb(255, 255, 255);
     -fx-border-radius: 15px;
     -fx-padding: 10px;

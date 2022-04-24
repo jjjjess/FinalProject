@@ -1,3 +1,4 @@
+// ****************************************************
 // Student names: Jesse Tripp and Indira Mekala
 // Class: COSC 211
 // Final Exam: Programming Exercise 16.3
@@ -41,10 +42,14 @@ public class Main extends Application {
     VBox trafficLightBox = new VBox(10);
     trafficLightBox.setAlignment(Pos.CENTER);
 
-    // Creating circle objects for lights
+    // Creating circle objects for lights and setting their stroke
     Circle c1 = getCircle();
     Circle c2 = getCircle();
     Circle c3 = getCircle();
+
+    c1.setStrokeWidth(3);
+    c2.setStrokeWidth(3);
+    c3.setStrokeWidth(3);
 
     // places circles inside traffic light body
     trafficLightBox.getChildren().addAll(c1, c2, c3);
@@ -55,7 +60,7 @@ public class Main extends Application {
     trafficLightBody.setHeight(300);
     trafficLightBody.setFill(Color.YELLOW);
     trafficLightBody.setStroke(Color.GRAY);
-    trafficLightBody.setStrokeWidth(.5);
+    trafficLightBody.setStrokeWidth(3);
     StackPane trafficLight = new StackPane(trafficLightBody, trafficLightBox);
 
     // Area for buttons
@@ -82,8 +87,21 @@ public class Main extends Application {
     windowLayout.setCenter(trafficLight);
     windowLayout.setBottom(buttonArea);
 
-    // Change color events
-    red.setOnAction(event -> {
+    // Method call to implement radio buttons/color change
+    toggleColors(c1, c2, c3, red, yellow, green);
+
+    // Scene creation - represents physical contents of JavaFX
+    Scene scene = new Scene(windowLayout, 500, 500);
+    scene.getStylesheets().add("application.css");
+    primaryStage.setTitle("Jesse and Indira's Traffic Light Simulator");
+    primaryStage.setScene(scene);
+    primaryStage.show(); // Display window
+  }
+
+  // Methods that begin radio toggle options.
+  private void toggleColors(Circle c1, Circle c2, Circle c3, RadioButton red, RadioButton yellow,
+      RadioButton green) {
+    red.setOnAction(event -> { // "Lambda" expression syntax - pg 606
       if (red.isSelected()) {
         c1.setFill(Color.RED);
         c2.setFill(Color.DARKGRAY);
@@ -115,13 +133,6 @@ public class Main extends Application {
         green.setStyle("-fx-text-fill:green");
       }
     });
-
-    // Scene creation - represents physical contents of JavaFX
-    Scene scene = new Scene(windowLayout, 500, 500);
-    scene.getStylesheets().add("application.css");
-    primaryStage.setTitle("Jesse and Indira's Traffic Light Simulator");
-    primaryStage.setScene(scene);
-    primaryStage.show(); // Display window
   }
 
   // Constructs circles for the lights
